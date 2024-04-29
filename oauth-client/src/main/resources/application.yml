@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: oauth-client
+  security:
+    oauth2:
+      client:
+        provider:
+          rms:
+            authorization-uri: http://localhost:9000/oauth2/authorize
+            token-uri: http://localhost:9000/oauth2/token
+            jwk-set-uri: http://localhost:9000/oauth2/jwks
+        registration:
+          login-client:
+            provider: rms
+            client-id: login-client
+            client-secret: secret
+            client-authentication-method: client_secret_basic
+            authorization-grant-type: authorization_code
+            redirect-uri: http://spring-oauth-client:8080/login/oauth2/code/login-client
+            scope: openid,profile,message
+            client-name: Spring
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
+logging:
+  level:
+    root: debug

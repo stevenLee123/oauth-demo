@@ -1,0 +1,12 @@
+server:
+  port: 9000
+
+logging:
+  level:
+    root: info
+
+spring:
+  application:
+    name: authorization-server
+
+
